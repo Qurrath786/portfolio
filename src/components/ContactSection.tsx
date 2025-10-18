@@ -1,10 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 export default function ContactSection() {
+  const [email, setEmail] = useState("");
+
   return (
-    <section id="contact" className="max-w-4xl mx-auto py-12 px-6">
-      <h2 className="text-xl font-semibold mb-4">Contact</h2>
-      <p>Mail: <a href="mailto:you@example.com">you@example.com</a></p>
+    <section id="contact" className="section contact-section">
+      <div className="container">
+        <h2>Contact</h2>
+        <form onSubmit={(e) => { e.preventDefault(); alert("Form submitted: " + email); }}>
+          <input
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </section>
   );
 }

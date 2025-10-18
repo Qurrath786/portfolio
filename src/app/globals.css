@@ -152,3 +152,139 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .bg-canvas { display: none; }
 }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.navbar { position: fixed; top: 16px; left: 16px; right: 16px; z-index: 20; display:flex; justify-content:space-between; align-items:center; }
+.nav-list { display:flex; gap: 16px; list-style:none; padding:0; margin:0; }
+.logo { font-weight:700; }
+/* Projects 3D-card grid */
+.section-heading { font-size: clamp(1.8rem, 3.8vw, 2.8rem); margin-bottom: 0.25rem; }
+.section-lead { color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* card */
+.project-card {
+  transform-style: preserve-3d;
+  transition: transform 350ms cubic-bezier(.2,.9,.2,1), box-shadow 350ms;
+  will-change: transform;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  padding: 20px;
+  min-height: 240px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto; /* so cards are interactive even though canvas container is pointer-events: none */
+}
+
+/* subtle floating motion for entire card group (non-intrusive) */
+.project-card.hovered { transition-duration: 200ms; }
+
+/* inner content transforms slightly forward when hovered */
+.project-card-inner {
+  transform: translateZ(18px);
+  transition: transform 250ms ease;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* Type badge */
+.project-badge {
+  display:inline-block;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background: linear-gradient(90deg,#ffd29a,#ff7b7b);
+  color:#111;
+  font-weight:700;
+  width:fit-content;
+}
+
+/* Title / description */
+.project-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 6px 0;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+.project-desc {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  margin-bottom:8px;
+}
+.project-stack {
+  margin-top:auto;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  border-top: 1px dashed rgba(255,255,255,0.03);
+  padding-top: 8px;
+}
+.project-highlights {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  display: grid;
+  gap: 6px;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* focus for keyboard users */
+.project-card:focus {
+  outline: 2px solid rgba(255,190,120,0.18);
+  outline-offset: 6px;
+  transform: translateY(-6px) scale(1.005);
+}
+
+/* responsive adjustments */
+@media (max-width: 640px) {
+  .project-card { padding: 16px; min-height: 220px; }
+  .projects-grid { gap: 18px; }
+}
+/* --- Skills styles (append to globals.css) --- */
+.skills-grid { margin-top: 16px; }
+
+.skill-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: transform 240ms cubic-bezier(.2,.9,.2,1), box-shadow 240ms;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  min-width: 240px;
+}
+
+.skill-card:focus {
+  outline: 2px solid rgba(255,190,120,0.16);
+  outline-offset: 6px;
+  transform: translateY(-4px) scale(1.002);
+}
+
+.skill-left { width: 76px; flex: 0 0 76px; display:flex; align-items:center; justify-content:center; }
+.skill-right { flex: 1; min-width:0; display:flex; flex-direction:column; gap:6px; }
+.skill-name { font-weight: 700; color: #fff; font-size: 14px; }
+.skill-meta { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+/* ensure ThreeSkills canvas area looks good */
+.skills-section aside { border: 1px solid rgba(255,255,255,0.03); }
+
+/* responsive */
+@media (max-width: 960px) {
+  .skills-grid { display:block; }
+  .skills-grid > div { margin-bottom: 20px; }
+}
