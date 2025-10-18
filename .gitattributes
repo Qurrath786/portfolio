@@ -1,0 +1,7 @@
+# Normalize line endings (always use LF in repo)
+* text=auto
+*.css text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
