@@ -1,0 +1,20 @@
+{
+    "tailwindCSS.includeLanguages": {
+      "javascript": "javascript",
+      "javascriptreact": "javascript",
+      "typescript": "javascript",
+      "typescriptreact": "javascript"
+    },
+    "tailwindCSS.experimental.configFile": "tailwind.config.cjs",
+    "files.associations": {
+      "*.css": "tailwindcss",
+      "*.pcss": "tailwindcss"
+    },
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "css.lint.unknownAtRules": "ignore",
+    "liveServer.settings.multiRootWorkspaceName": "portfolio1",
+    "css.validate": false
+  }
+  
